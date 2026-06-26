@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Floor Coverage Ratio — Peer Intelligence Metric</title>
+<style>
+  :root{
+    --ink:#2c2b28; --ink2:#55534d; --mute:#7a7870; --line:rgba(60,59,56,0.14);
+    --bg:#ffffff; --surface:#faf9f6; --accent:#185FA5;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:#f3f1ec; color:var(--ink);
+    font-family:-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; line-height:1.65;}
+  .wrap{max-width:840px; margin:0 auto; background:var(--bg); padding:48px 56px 64px;}
+  h1{font-size:27px; font-weight:600; line-height:1.2; margin:0 0 6px;}
+  h2{font-size:19px; font-weight:600; margin:38px 0 10px;}
+  .sub{color:var(--mute); font-size:14px; margin:0 0 28px;}
+  p{font-size:16px; margin:0 0 14px; color:var(--ink);}
+  .lede{font-size:17px; color:var(--ink2);}
+  ul{font-size:16px; margin:0 0 14px; padding-left:22px;}
+  li{margin:0 0 7px;}
+  .scale{display:flex; gap:10px; flex-wrap:wrap; margin:6px 0 16px;}
+  .scale div{background:var(--surface); border:0.5px solid var(--line); border-radius:8px; padding:8px 12px; font-size:14px;}
+  .scale b{color:var(--accent);}
+  figure{margin:18px 0 8px; background:var(--bg);}
+  figcaption{font-size:13px; color:var(--mute); margin-top:8px; line-height:1.5;}
+  .chartbox{position:relative; width:100%; height:340px;}
+  #bw{position:relative;}
+  .bwtip{position:absolute; display:none; pointer-events:none; background:#2c2b28; color:#fff; font-size:12.5px; line-height:1.5; padding:8px 11px; border-radius:7px; box-shadow:0 3px 10px rgba(0,0,0,0.2); max-width:230px; z-index:5;}
+  .bwhit:hover{fill:rgba(24,95,165,0.06) !important;}
+  .legend{display:flex; flex-wrap:wrap; gap:14px; margin:2px 0 8px; font-size:12px; color:var(--ink2);}
+  .legend span{display:flex; align-items:center; gap:5px;}
+  .sw{width:14px; height:3px; border-radius:2px;} .dot{width:11px;height:11px;border-radius:50%;} .sq{width:12px;height:12px;border-radius:2px;}
+  .foot{margin-top:40px; padding-top:16px; border-top:0.5px solid var(--line); font-size:13px; color:var(--mute);}
+  hr{border:none; border-top:0.5px solid var(--line); margin:34px 0;}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<h1>The Floor Coverage Ratio</h1>
+<p class="sub">A peer-intelligence metric for performing arts centers · AMS Analytics · Q2 2026 · internal</p>
+
+<p class="lede">This note introduces a metric we built and validated from the cohort filings — the Floor Coverage Ratio — and shows what it can tell a center's leadership. It's written to be read; the full methodology and evidence live in a companion technical reference.</p>
+
+<h2>What it measures</h2>
+<p>Every center carries a fixed cost just to keep its building open — occupancy plus administration, what the platform calls its <em>operating cost</em>. The Floor Coverage Ratio asks one question: after a center's Broadway series pays for itself (its artists, production, and marketing), how much of that fixed building cost does what's left over cover?</p>
+<div class="scale">
+  <div><b>1.0</b> — Broadway covers the building outright</div>
+  <div><b>0.5</b> — it covers half</div>
+  <div><b>2.0</b> — it covers the building twice over</div>
+</div>
+<p>Because the number is already net of what Broadway costs to run, it represents real, discretionary money — not gross ticket sales. Across the clean cohort, Broadway expense eats 60–95¢ of every Broadway dollar; the ratio is built on what's left.</p>
+
+<h2>The cohort at a glance</h2>
+<figure>
+  <div id="bw"></div>
+  <figcaption>Each row is one center's Broadway floor-coverage ratio across all its reliable years. Box = middle half of years; line in the box = median ("normal"); whiskers = full range. Bands: Drain / Minor / Major / Engine / Powerhouse. Dashed line at 1.0 = covers the building outright. <b>Seattle and Blumenthal are highlighted</b> — we zoom into both below. 26 centers with four or more good years.</figcaption>
+</figure>
+<p>Two things stand out, and together they're why the metric is worth trusting:</p>
+<ul>
+  <li><b>It separates centers cleanly.</b> They fan out across five natural bands — from centers whose Broadway carries the building one-and-a-half times over, down to those where it covers essentially none of it. That's structure, not noise.</li>
+  <li><b>Each center has a stable "normal."</b> Most boxes are narrow — a center sits where it sits, year after year. The occasional long whisker to the right (Seattle, Bushnell, Tennessee) is a single blockbuster season that snaps back, not a new altitude. That persistence is what lets a center treat its median as a real baseline.</li>
+</ul>
+<p>And the dashed 1.0 line tells its own story: only about <b>a quarter</b> of centers cover their building outright on Broadway. For most, the typical season covers about half.</p>
+
+<h2>What it's for — a lens, not a scorecard</h2>
+<p>A higher ratio isn't a better grade; it's a different position. The number measures how self-sufficient a center's building is on its commercial programming — and the room <em>above</em> that coverage is what's available to spend on mission programming that was never meant to pay for itself. Two centers at opposite ends of the chart aren't winner and loser; they're different institutions making different bets. The value to a leader is twofold: knowing where they actually stand relative to peers, and holding a single, legible number that explains to a board why the commercial slate is what underwrites everything else.</p>
+
+<h2>Reading your own number over time</h2>
+<p>The cohort view shows the metric works; the real use is watching one center across years. Two examples.</p>
+
+<figure>
+  <div class="legend">
+    <span><span class="sw" style="background:#378ADD"></span>Broadway FCR</span>
+    <span><span class="sw" style="background:#7F77DD; border-top:2px dashed #7F77DD; height:0"></span>median (baseline)</span>
+    <span><span class="sq" style="background:rgba(127,119,221,0.18)"></span>normal range</span>
+    <span><span class="dot" style="background:#BA7517"></span>blockbuster year</span>
+    <span><span class="sq" style="background:rgba(29,158,117,0.18)"></span>projection</span>
+  </div>
+  <div class="chartbox"><canvas id="seattle" role="img" aria-label="Seattle Theatre Group Broadway floor coverage by year, 2014 to 2025 with projection. Median 0.70; a 2018 spike to 2.43 that reverts; recent years drift to 0.41."></canvas></div>
+  <figcaption><b>Seattle Theatre Group.</b> Covered its building nearly two-and-a-half times over in a single season — its first <em>Hamilton</em> year. Banked as a new normal, that would have misled; it reverted at once. The real signal is quieter: the last several years have settled at the bottom of its range as the building itself grew — the floor more than tripled. The blockbuster was the distraction; the drift is the story.</figcaption>
+</figure>
+
+<figure>
+  <div class="chartbox"><canvas id="blum" role="img" aria-label="Blumenthal Performing Arts Center Broadway floor coverage 2008 to 2025 with projection. Median 1.04; a 2024 dip to 0.44 below its normal range."></canvas></div>
+  <figcaption><b>Blumenthal Performing Arts Center.</b> Steadier — it covered its building right around once over for most of sixteen years. Then a single season dropped clean below its normal range. That's the opposite signal: not a spike to discount, but a dip worth investigating.</figcaption>
+</figure>
+
+<h2>How to read a move</h2>
+<ul>
+  <li>A one-year jump out of a center's normal range is almost always a single blockbuster title, and it reverts. Don't bank it as the new baseline.</li>
+  <li>A sustained move to a new level is structural — usually the building cost grew faster than the programming could follow. That's the number to act on.</li>
+</ul>
+<p>And because the metric is sticky year to year, next season's honest expectation is a center's <em>recent</em> level, not its best season — which is why the projection on each chart sits deliberately below the center's lifetime peak.</p>
+
+<h2>What it doesn't tell you</h2>
+<p>It's a structural screen, not a verdict. It doesn't speak to within-season timing, it doesn't assign which program "owes" the shared building cost, and it reads differently for a center that owns its hall than one that rents. Read it as a position over time, not a report card.</p>
+
+<div class="foot">Methodology, data sources, and the full evidence ledger are in the companion technical reference (<code>FCR_Technical_Documentation.md</code>). Data: cohort filings current through ~June 2026; COVID years (2020–21) excluded; one chronically mis-coded center excluded from all figures.</div>
+
+</div>
+
+<script>
+/* ---- box-and-whisker (pure SVG, no dependency) ---- */
+(function(){
+  var txt='#3C3B38', mute='#6b6a64', grid='rgba(95,94,90,0.13)';
+  var boxFill='rgba(55,138,221,0.36)', boxStroke='#378ADD', medCol='#0C447C', whisk='rgba(95,94,90,0.5)';
+  var hiFill='rgba(186,117,23,0.42)', hiStroke='#BA7517', hiMed='#7a4d0a', hiRow='rgba(186,117,23,0.08)';
+  var HI={'Seattle (STG)':1,'Blumenthal':1};
+  var data=[
+    ["Tennessee PAC",0.57,1.24,1.51,2.01,3.03],["Columbus (CAPA)",0.88,1.15,1.42,1.44,1.98],
+    ["Playhouse Square",0.68,1.00,1.29,1.51,2.90],["Broward",0.00,0.55,1.24,1.54,1.92],
+    ["Proctors",0.59,0.83,1.08,1.54,2.45],["Blumenthal",0.44,0.74,1.04,1.44,1.72],
+    ["Bass (Fort Worth)",0.33,0.66,0.89,1.10,1.24],["Bushnell",0.48,0.66,0.88,1.20,2.69],
+    ["State Theatre NB",-1.39,0.13,0.79,0.90,1.53],["Hobby Center",0.49,0.59,0.78,1.09,1.54],
+    ["Seattle (STG)",0.41,0.51,0.70,0.91,2.43],["Denver",-0.16,0.47,0.68,0.78,1.65],
+    ["Overture",0.24,0.42,0.66,0.96,1.30],["Smith Center",0.01,0.48,0.58,0.73,0.95],
+    ["Dr. Phillips",0.26,0.38,0.48,0.57,1.00],["Dayton Live",0.19,0.33,0.37,0.44,0.88],
+    ["Omaha",0.02,0.29,0.34,0.38,0.55],["Fox Cities",0.00,0.05,0.26,0.81,1.56],
+    ["Marcus",0.04,0.18,0.22,0.70,0.72],["Ensemble / Kimmel",0.01,0.11,0.22,0.37,0.61],
+    ["Pittsburgh",-0.04,0.04,0.18,0.24,0.52],["Segerstrom",-0.42,0.03,0.17,0.35,0.52],
+    ["Walton",-0.32,-0.04,0.08,0.18,0.34],["Arsht (Miami)",-0.14,0.00,0.03,0.04,0.09],
+    ["Ordway",-0.12,-0.09,0.00,0.13,0.44],["AT&T (Dallas)",-0.18,-0.11,-0.02,0.04,0.11]
+  ];
+  var nyrs=[15,6,13,15,4,16,12,16,6,4,10,16,10,8,9,12,15,8,5,13,15,12,9,13,6,12];
+  var W=760,padL=190,padR=16,padT=60,rowH=27,padB=38;
+  var plotH=data.length*rowH,H=padT+plotH+padB,x0=-1.5,x1=3.1,plotW=W-padL-padR;
+  function X(v){return padL+(v-x0)/(x1-x0)*plotW;}
+  var bands=[[-1.5,0,"Drain","226,75,74"],[0,0.5,"Minor","136,135,128"],[0.5,1,"Major","55,138,221"],[1,2,"Engine","29,158,117"],[2,3.1,"Powerhouse","99,153,34"]];
+  function esc(t){return t.replace(/&/g,"&amp;");}
+  var s='<svg viewBox="0 0 '+W+' '+H+'" width="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Box and whisker of Broadway floor coverage per center, sorted by median.">';
+  bands.forEach(function(b){var x=X(b[0]),w=X(b[1])-X(b[0]);
+    s+='<rect x="'+x.toFixed(1)+'" y="'+padT+'" width="'+w.toFixed(1)+'" height="'+plotH+'" fill="rgba('+b[3]+',0.09)"/>';
+    s+='<text x="'+((x+X(b[1]))/2).toFixed(1)+'" y="'+(padT-22)+'" text-anchor="middle" font-size="13" fill="'+mute+'">'+b[2]+'</text>';});
+  [0,0.5,1,1.5,2,2.5,3].forEach(function(v){
+    s+='<line x1="'+X(v).toFixed(1)+'" y1="'+padT+'" x2="'+X(v).toFixed(1)+'" y2="'+(padT+plotH)+'" stroke="'+grid+'" stroke-width="1"/>';
+    s+='<text x="'+X(v).toFixed(1)+'" y="'+(H-padB+18)+'" text-anchor="middle" font-size="12.5" fill="'+mute+'">'+v.toFixed(1)+'</text>';});
+  s+='<line x1="'+X(1).toFixed(1)+'" y1="'+(padT-6)+'" x2="'+X(1).toFixed(1)+'" y2="'+(padT+plotH)+'" stroke="'+boxStroke+'" stroke-width="1.2" stroke-dasharray="3,3"/>';
+  s+='<text x="'+X(1).toFixed(1)+'" y="'+(padT-40)+'" text-anchor="middle" font-size="12.5" fill="'+mute+'">covers building (1.0)</text>';
+  s+='<text x="'+(padL+plotW/2).toFixed(1)+'" y="'+(H-2)+'" text-anchor="middle" font-size="14" fill="'+mute+'">Broadway floor coverage ratio (net contribution / building floor)</text>';
+  data.forEach(function(d,i){var name=d[0],mn=d[1],q1=d[2],md=d[3],q3=d[4],mx=d[5],hi=HI[name];
+    var yc=padT+i*rowH+rowH/2,bt=yc-rowH*0.30,bb=yc+rowH*0.30;
+    if(hi){s+='<rect x="'+padL+'" y="'+(padT+i*rowH)+'" width="'+(plotW)+'" height="'+rowH+'" fill="'+hiRow+'"/>';}
+    var ws=hi?hiStroke:whisk;
+    s+='<line x1="'+X(mn).toFixed(1)+'" y1="'+yc+'" x2="'+X(mx).toFixed(1)+'" y2="'+yc+'" stroke="'+ws+'" stroke-width="1"/>';
+    s+='<line x1="'+X(mn).toFixed(1)+'" y1="'+(yc-3)+'" x2="'+X(mn).toFixed(1)+'" y2="'+(yc+3)+'" stroke="'+ws+'" stroke-width="1"/>';
+    s+='<line x1="'+X(mx).toFixed(1)+'" y1="'+(yc-3)+'" x2="'+X(mx).toFixed(1)+'" y2="'+(yc+3)+'" stroke="'+ws+'" stroke-width="1"/>';
+    s+='<rect x="'+X(q1).toFixed(1)+'" y="'+bt.toFixed(1)+'" width="'+(X(q3)-X(q1)).toFixed(1)+'" height="'+(bb-bt).toFixed(1)+'" fill="'+(hi?hiFill:boxFill)+'" stroke="'+(hi?hiStroke:boxStroke)+'" stroke-width="1"/>';
+    s+='<line x1="'+X(md).toFixed(1)+'" y1="'+bt.toFixed(1)+'" x2="'+X(md).toFixed(1)+'" y2="'+bb.toFixed(1)+'" stroke="'+(hi?hiMed:medCol)+'" stroke-width="2"/>';
+    s+='<text x="'+(padL-8)+'" y="'+(yc+4.5)+'" text-anchor="end" font-size="14" font-weight="'+(hi?'600':'400')+'" fill="'+(hi?hiMed:txt)+'">'+esc(name)+'</text>';s+='<rect class="bwhit" data-i="'+i+'" x="0" y="'+(padT+i*rowH).toFixed(1)+'" width="'+W+'" height="'+rowH+'" fill="transparent" pointer-events="all"/>';});
+  s+='</svg>';
+  var bw=document.getElementById('bw'); bw.innerHTML=s;
+  var tip=document.createElement('div'); tip.className='bwtip'; bw.appendChild(tip);
+  function bandOf(m){ if(m<0)return['Drain','#F09595']; if(m<0.5)return['Minor','#C9C7BD']; if(m<1)return['Major','#85B7EB']; if(m<2)return['Engine','#5DCAA5']; return['Powerhouse','#97C459']; }
+  bw.addEventListener('mousemove',function(e){
+    var t=e.target;
+    if(t&&t.getAttribute&&t.getAttribute('class')==='bwhit'){
+      var ix=+t.getAttribute('data-i'), d=data[ix], bd=bandOf(d[3]);
+      tip.style.borderLeft='4px solid '+bd[1];
+      tip.innerHTML='<b>'+esc(d[0])+'</b> &nbsp;<span style="color:'+bd[1]+'; font-weight:600">'+bd[0]+'</span><br>median '+d[3].toFixed(2)+' &middot; range '+d[1].toFixed(2)+' to '+d[5].toFixed(2)+'<br>middle half '+d[2].toFixed(2)+' to '+d[4].toFixed(2)+' &middot; '+nyrs[ix]+' yrs';
+      var r=bw.getBoundingClientRect(), lx=e.clientX-r.left+14;
+      if(lx>r.width-210){lx=e.clientX-r.left-210;}
+      tip.style.left=lx+'px'; tip.style.top=(e.clientY-r.top+12)+'px'; tip.style.display='block';
+    } else { tip.style.display='none'; }
+  });
+  bw.addEventListener('mouseleave',function(){tip.style.display='none';});
+})();
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+(function(){
+  var grid='rgba(95,94,90,0.12)', tick='#5F5E5A', N=null;
+  function mk(id,L,actual,med,iqrLo,iqrHi,bridge,projC,projLo,projHi,amberIdx,ymin,ymax,projR){
+    var ptC=L.map(function(_,i){return i===amberIdx?'#BA7517':'#378ADD';});
+    new Chart(document.getElementById(id),{type:'line',data:{labels:L,datasets:[
+      {data:iqrLo,borderWidth:0,pointRadius:0,fill:false,order:9},
+      {data:iqrHi,borderWidth:0,pointRadius:0,backgroundColor:'rgba(127,119,221,0.16)',fill:'-1',order:9},
+      {data:projLo,borderWidth:0,pointRadius:0,fill:false,order:9},
+      {data:projHi,borderWidth:0,pointRadius:0,backgroundColor:'rgba(29,158,117,0.16)',fill:'-1',order:9},
+      {data:med,borderColor:'#7F77DD',borderDash:[6,4],borderWidth:1.5,pointRadius:0,fill:false,order:4},
+      {data:bridge,borderColor:'#888780',borderDash:[2,3],borderWidth:1.5,pointRadius:0,spanGaps:true,fill:false,order:6},
+      {data:projC,borderColor:'#1D9E75',borderDash:[6,4],borderWidth:2,pointRadius:projR,pointBackgroundColor:'#1D9E75',spanGaps:true,fill:false,order:3},
+      {data:actual,borderColor:'#378ADD',borderWidth:2.5,pointRadius:4,pointBackgroundColor:ptC,pointBorderColor:ptC,spanGaps:false,fill:false,tension:0.15,order:1}
+    ]},options:{responsive:true,maintainAspectRatio:false,
+      plugins:{legend:{display:false},tooltip:{callbacks:{label:function(c){return c.parsed.y===null?'':'FCR '+c.parsed.y.toFixed(2);}}}},
+      scales:{y:{min:ymin,max:ymax,ticks:{color:tick,stepSize:0.5,callback:function(v){return v.toFixed(1);}},grid:{color:grid},title:{display:true,text:'floor coverage ratio',color:tick}},
+        x:{ticks:{color:tick,autoSkip:false,maxRotation:0},grid:{display:false}}}}});
+  }
+  var sL=['2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027'];
+  mk('seattle',sL,
+    [0.81,1.14,0.55,0.50,2.43,0.94,N,N,0.83,0.60,0.41,0.41,N,N],
+    sL.map(function(_,i){return i<=11?0.70:N;}), sL.map(function(_,i){return i<=11?0.51:N;}), sL.map(function(_,i){return i<=11?0.91:N;}),
+    sL.map(function(_,i){return i===5?0.94:(i===8?0.83:N);}),
+    sL.map(function(_,i){return i===11?0.41:((i===12||i===13)?0.47:N);}),
+    sL.map(function(_,i){return (i===12||i===13)?0.15:N;}), sL.map(function(_,i){return (i===12||i===13)?0.79:N;}),
+    4,-0.2,2.7, sL.map(function(_,i){return (i===12||i===13)?4:0;}));
+  var bL=['2008','2009','2010','2011','2012','2013','2014','2015','2016','2017','2018','2019','2020','2021','2022','2023','2024','2025','2026','2027'];
+  mk('blum',bL,
+    [1.73,1.04,1.44,0.62,0.63,1.04,0.82,1.16,1.24,0.69,1.51,1.44,N,N,1.44,0.86,0.44,0.76,N,N],
+    bL.map(function(_,i){return i<=17?1.04:N;}), bL.map(function(_,i){return i<=17?0.74:N;}), bL.map(function(_,i){return i<=17?1.44:N;}),
+    bL.map(function(_,i){return (i===11||i===14)?1.44:N;}),
+    bL.map(function(_,i){return i===17?0.76:((i===18||i===19)?0.69:N);}),
+    bL.map(function(_,i){return (i===18||i===19)?0.37:N;}), bL.map(function(_,i){return (i===18||i===19)?1.01:N;}),
+    -1,0,2.0, bL.map(function(_,i){return (i===18||i===19)?4:0;}));
+})();
+</script>
+</body>
+</html>
